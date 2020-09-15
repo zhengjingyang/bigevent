@@ -4,7 +4,7 @@ function renderUserInfo() {
     url: '/my/userinfo',
     success: function (res) {
       if (res.status == 0) {
-        console.log(res);
+        // console.log(res);
         var nickname = res.data.nickname
         var username = res.data.username
         if (nickname.length == 0) {
@@ -18,7 +18,6 @@ function renderUserInfo() {
           $('.userinfo img').show().attr('src', res.data.user_pic)
           $('.user_center i').hide()
           $('.userinfo p').hide()
-          console.log(111);
         } else {
           $('.user_center i').css('display', 'inline-block').html(res.data.username.substr(0, 1).toUpperCase())
           $('.userinfo p').show().html(res.data.username.substr(0, 1).toUpperCase())
@@ -33,6 +32,11 @@ renderUserInfo()
 
 // 实现退出功能
 $('.quit').click(function () {
-  location.href = '/login.html';
-  localStorage.removeItem('token')
+  layer.confirm('确认要退出吗', { icon: 3, title: '提示' }, function (index) {
+    //do something
+    location.href = '/login.html';
+    localStorage.removeItem('token')
+    layer.close(index);
+  });
+
 })
