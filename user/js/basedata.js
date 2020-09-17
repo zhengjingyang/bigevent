@@ -1,3 +1,4 @@
+var form = layui.form;
 // 获取基本信息 数据回填
 function getInfo() {
   $.ajax({
@@ -5,10 +6,13 @@ function getInfo() {
     success: function (res) {
       if (res.status == 0) {
         // console.log(res);
-        $('input[name = username]').val(res.data.username)
-        $('input[name = nickname]').val(res.data.nickname)
-        $('input[name = email]').val(res.data.email)
-        $('input[name = id]').val(res.data.id)
+        // $('input[name = username]').val(res.data.username)
+        // $('input[name = nickname]').val(res.data.nickname)
+        // $('input[name = email]').val(res.data.email)
+        // $('input[name = id]').val(res.data.id)
+
+        // layui快速为表单赋值 为form标签添加lay-filter=“” 属性
+        form.val('formbasedata', res.data)
       }
     }
   })
@@ -36,4 +40,11 @@ $('.layui-form').on('submit', function (e) {
       }
     }
   })
+})
+
+// 重置功能
+$('button:contains("重置")').click(function (e) {
+  e.preventDefault()
+  // console.log(11);
+  getInfo();
 })

@@ -38,7 +38,7 @@ $('.form_login').on('submit', function (e) {
   // console.log(data);
   $.ajax({
     type: 'POST',
-    url: 'http://ajax.frontend.itheima.net/api/login',
+    url: '/api/login',
     data: data,
     success: function (res) {
       layer.msg(res.message)
@@ -59,7 +59,7 @@ $('.form_register').on('submit', function (e) {
   var data = $(this).serialize();
   $.ajax({
     type: 'POST',
-    url: 'http://ajax.frontend.itheima.net/api/reguser',
+    url: '/api/reguser',
     data: data,
     success: function (res) {
       layer.msg(res.message);
