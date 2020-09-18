@@ -61,6 +61,7 @@ $('#form-pub').on('submit', function (e) {
     // 得到文件对象之后 进行后续的操作
     fd.append('cover_img', blob);
 
+    // console.log(fd);
     //发起ajax请求
     pubArt(fd);
   })
